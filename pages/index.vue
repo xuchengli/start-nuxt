@@ -18,6 +18,9 @@
         <Button target="_blank" to="https://www.iviewui.com/">
           iView
         </Button>
+        <nuxt-link to="/user">
+          登陆
+        </nuxt-link>
       </div>
     </div>
   </div>

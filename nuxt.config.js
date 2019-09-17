@@ -23,7 +23,8 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'iview/dist/styles/iview.css'
+    'iview/dist/styles/iview.css',
+    'assets/main.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -60,5 +61,8 @@ module.exports = {
     */
     extend (config, ctx) {
     }
+  },
+  router: {
+    middleware: 'auth'
   }
 }
