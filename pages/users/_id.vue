@@ -10,7 +10,16 @@
 <script>
 export default {
   validate ({ params }) {
-    return /^\d+$/.test(params.id)
+    const valid = /^\d+$/.test(params.id)
+    if (valid) {
+      if (parseInt(params.id) > 10) {
+        throw new Error('用户id不能大于10!')
+      } else {
+        return true
+      }
+    } else {
+      throw new Error('无效的用户id!')
+    }
   },
   computed: {
     id () {
