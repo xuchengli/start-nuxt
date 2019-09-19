@@ -5,6 +5,6 @@ const router = new Router({
 })
 
 router.get('/', (ctx) => {
-  ctx.body = 'hello world.'
+  ctx.body = { message: 'hello world.' }
 })
 module.exports = router

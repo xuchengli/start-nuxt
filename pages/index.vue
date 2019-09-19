@@ -7,6 +7,8 @@
       </h1>
       <h2 class="subtitle">
         Welcome to the iView + Nuxt.js template
+        &nbsp;&nbsp;
+        {{ message }}
       </h2>
       <div class="links">
         <Button type="primary" target="_blank" to="https://nuxtjs.org/">
@@ -31,6 +33,17 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  async asyncData ({ $axios, error }) {
+    try {
+      const { message } = await $axios.$get('/api/data')
+      return { message }
+    } catch (err) {
+      error({
+        statusCode: 500,
+        message: err.message
+      })
+    }
   }
 }
 </script>
