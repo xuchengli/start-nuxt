@@ -1,12 +1,16 @@
 const Koa = require('koa')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
+const Router = require('koa-router')
 
 const app = new Koa()
+const router = new Router()
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
 config.dev = app.env !== 'production'
+
+const route = require('./routes')
 
 async function start () {
   // Instantiate nuxt.js
@@ -24,6 +28,9 @@ async function start () {
   } else {
     await nuxt.ready()
   }
+
+  router.prefix('/api').use(route.routes())
+  app.use(router.routes())
 
   app.use((ctx) => {
     ctx.status = 200
